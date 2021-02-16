@@ -1,0 +1,150 @@
+CREATE DATABASE db_pizzaria_legal;
+
+-- criando tabela pizza
+CREATE TABLE TB_PIZZA(
+CODIGO_PIZZA SMALLINT AUTO_INCREMENT,
+DOCE_OU_SALGADA VARCHAR(1),
+SABORES VARCHAR(20),
+TAMANHO Varchar(1),
+PRECO FLOAT,
+PRIMARY KEY (CODIGO_PIZZA)
+);
+
+-- criando tabela categoria
+CREATE TABLE TB_CATEGORIA(
+CODIGO_CLIENTE SMALLINT AUTO_INCREMENT,
+NOME Varchar (30),
+ENDERECO VARCHAR (100),
+QUANTIDADE int,
+FOREIGN KEY (CODIGO_CLIENTE) REFERENCES tb_pizza (codigo_pizza)
+);                                   
+
+-- fazendo algumas alterações
+alter table tb_CATEGORIA drop column QUANTIDADE;
+alter table tb_categoria ADD column (TELEFONE VARCHAR(9));
+SELECT * FROM tb_categoria;
+SELECT * FROM tb_pizza;
+
+-- deletando 
+delete from tb_CATEGORIA where codigo_CLIENTE=1;
+
+-- inserindo em tabela pizza
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","NAPOLITANA","G", 35.90);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","PORTUGUESA","M", 30);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","4 QUEIJOS","M", 34.90);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","FRANGO COM BACON","G", 38.50);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","FRANGO COM BACON","G", 38.50);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","FRANGO COM CATUPIRY","G", 40);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("S","MARGUERITA","M", 31.60);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("D","BRIGADEIRO","M", 28.50);
+
+INSERT INTO TB_pizza(
+DOCE_OU_SALGADA,
+SABORES,
+TAMANHO,
+PRECO
+) VALUES
+("D","ROMEU E JULIERA","P", 26.40);
+
+-- inserindo dados em tabela categoria
+INSERT INTO TB_CATEGORIA(
+NOME,
+ENDERECO,
+TELEFONE) VALUES
+("Juliete","Rua das esfomeadas, numero 18", 9998612);
+
+INSERT INTO TB_CATEGORIA(
+NOME,
+ENDERECO,
+TELEFONE) VALUES
+("Carla Betania","Rua das comedoras de pizza, numero 523", 99824143);
+
+INSERT INTO TB_CATEGORIA(
+NOME,
+ENDERECO,
+TELEFONE) VALUES
+("Bruno Bailão","Rua dos Dançarinhos de funk, numero 69", 92528482);
+
+INSERT INTO TB_CATEGORIA(
+NOME,
+ENDERECO,
+TELEFONE) VALUES
+("Augusto Trafica","Rua do Pó, numero 71", 92251142);
+
+INSERT INTO TB_CATEGORIA(
+NOME,
+ENDERECO,
+TELEFONE) VALUES
+("Bete Yokitos","Rua da Fumuça, numero 981", 925783252);
+
+-- alguns selects
+select * from tb_pizza where PRECO >=45.00;
+
+select * from tb_pizza where preco BETWEEN 29.00 AND 60.00;
+
+SELECT * FROM tb_pizza WHERE SABORES LIKE 'C%';
+
+SELECT * FROM TB_PIZZA WHERE DOCE_OU_SALGADA='D';
+
+-- inner join
+SELECT * FROM TB_PIZZA
+INNER JOIN tb_categoria ON TB_PIZZA.codigo_pizza = tb_categoria.CODIGO_CLIENTE;
+
+-- visualizando as tabelas
+SELECT * FROM TB_PIZZA;
+SELECT * FROM TB_CATEGORIA;
